@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dayananda PhD Assistance - Professional PhD Research Support</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Color Palette Definition (Deep Navy Blue & Gold) --- */
+        :root {
+            --color-primary-dark: #001F3F; /* Deep Navy Blue (Backgrounds, Main Icons) */
+            --color-accent-gold: #FFC300; /* Academic Gold/Yellow (Hover, Accents, Key Buttons) */
+            --color-light-text: #FFFFFF; /* White (High-contrast text on dark backgrounds) */
+            --color-dark-text: #333333; /* Dark Gray (Main text on light backgrounds) */
+            --color-section-bg: #F8F8F8; /* Light Gray/Off-White (Phase Section Backgrounds) */
+            --color-border: #CCCCCC; /* Light Gray for borders */
+        }
+
+        /* --- Global Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--color-primary-dark);
+            color: var(--color-dark-text);
+            scroll-behavior: smooth;
+        }
+
+        /* --- Utility & Section Headers --- */
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section h2 {
+            color: var(--color-primary-dark);
+            font-size: 36px;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--color-accent-gold);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Sections with dark background */
+        #about, #resources, .main-footer {
+            background-color: var(--color-primary-dark);
+            color: var(--color-light-text);
+        }
+        #about h2, #resources h2 {
+            color: var(--color-accent-gold);
+        }
+
+        /* --- Top Navigation Bar --- */
+        .top {
+            background: var(--color-light-text);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--color-border);
+            max-width: 100%;
+            margin: 0 auto;
+            position: sticky; /* Keep navigation visible */
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--color-primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav {
+            margin-left: auto;
+        }
+
+        .nav a {
+            margin: 0 15px;
+            color: var(--color-dark-text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        .nav a:hover {
+            color: var(--color-accent-gold);
+        }
+
+        /* --- About Section --- */
+        #about {
+            padding-bottom: 30px; /* Reduced space before hero */
+        }
+        .about-desc {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        /* --- Hero Section & Popping Diamond/Circle Styles --- */
+        .hero {
+            background: var(--color-primary-dark);
+            color: var(--color-light-text);
+            padding: 50px 20px 50px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 50px;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 5px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Popping Diamond/Circle Styles */
+        .circle-stat {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: var(--color-primary-dark);
+            color: var(--color-light-text);
+            display: flex;
+            flex-direction: column; /* Allow content to stack */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.1em;
+            line-height: 1.4;
+            font-weight: 500;
+            border: 3px solid var(--color-accent-gold);
+            box-shadow: 0 0 15px rgba(255, 195, 0, 0.4);
+            z-index: 1;
+        }
+
+        .circle-stat.left {
+            top: -10px;
+            left: 50px;
+        }
+
+        .circle-stat.right {
+            top: 20px;
+            right: 50px;
+        }
+
+        /* --- Phase Cards Section (Home) --- */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 40px 20px;
+            background: var(--color-primary-dark);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--color-light-text);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid var(--color-accent-gold); /* Subtly tie to brand */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 195, 0, 0.3);
+        }
+
+        .card h3 {
+            margin: 20px 0 10px;
+            color: var(--color-primary-dark);
+            font-size: 20px;
+        }
+
+        .card p {
+            color: var(--color-dark-text);
+            font-size: 14px;
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            background: var(--color-accent-gold);
+            border-radius: 50%;
+            margin: 0 auto;
+            color: var(--color-primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        /* --- Individual Phase Sections (Phase 1-4) --- */
+        #phase1, #phase2, #phase3, #phase4 {
+            display: none; /* Initially hidden */
+            background: var(--color-section-bg);
+            padding: 60px 20px;
+            min-height: 80vh;
+        }
+        
+        #phase1 h2, #phase2 h2, #phase3 h2, #phase4 h2 {
+            color: var(--color-primary-dark);
+        }
+
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .service-item {
+            padding: 20px;
+            border-left: 4px solid var(--color-accent-gold);
+            background: var(--color-light-text);
+            transition: all 0.3s;
+            text-align: left;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-item:hover {
+            background: #FFFCE5;
+            border-left-color: var(--color-primary-dark);
+        }
+
+        .service-item h3 {
+            color: var(--color-primary-dark);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .service-item p {
+            color: var(--color-dark-text);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 5px;
+        }
+        .service-item p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .back-btn {
+            display: block;
+            margin: 30px auto 0;
+            padding: 12px 40px;
+            background: var(--color-accent-gold);
+            color: var(--color-primary-dark);
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--color-primary-dark);
+            color: var(--color-light-text);
+        }
+
+        /* --- Expertise Section Styles --- */
+        #expertise {
+            background: var(--color-section-bg);
+        }
+
+        .expert-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .expert-card {
+            background: var(--color-light-text);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 5px solid var(--color-primary-dark);
+        }
+
+        .expert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 31, 63, 0.2);
+        }
+
+        .expert-card h4 {
+            color: var(--color-primary-dark);
+            margin-bottom: 5px;
+            font-size: 1.4em;
+        }
+
+        .expert-card p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .expert-card .specialty {
+            font-weight: bold;
+            color: var(--color-accent-gold);
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* --- Testimonials Section Styles --- */
+        .testimonials-section {
+            background-color: var(--color-section-bg);
+        }
+
+        .testimonial-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-card {
+            background: var(--color-light-text);
+            border-top: 5px solid var(--color-accent-gold);
+            padding: 30px;
+            width: 100%;
+            max-width: 350px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 31, 63, 0.1);
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .quote-icon {
+            color: var(--color-accent-gold);
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--color-dark-text);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            color: var(--color-primary-dark);
+        }
+
+        .reviewer-title {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* --- Resources Section Styles --- */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .resource-card {
+            background: var(--color-light-text);
+            color: var(--color-dark-text);
+            padding: 30px;
+            border-radius: 8px;
+            transition: background 0.3s;
+            cursor: pointer;
+            border-left: 5px solid var(--color-accent-gold);
+        }
+
+        .resource-card:hover {
+            background: #e9e9e9;
+        }
+
+        .resource-card h4 {
+            color: var(--color-primary-dark);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .resource-card i {
+            color: var(--color-primary-dark);
+            margin-right: 10px;
+        }
+
+        .resource-card a {
+            color: var(--color-primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Contact Section Styles --- */
+        #contact {
+            background-color: var(--color-section-bg);
+        }
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .contact-form-container input, .contact-form-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid var(--color-border);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .contact-form-container input:focus, .contact-form-container textarea:focus {
+            border-color: var(--color-accent-gold);
+            outline: none;
+        }
+        .contact-form-container button {
+            background: var(--color-primary-dark);
+            color: var(--color-light-text);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+            display: block;
+            width: 100%;
+            font-weight: bold;
+        }
+        .contact-form-container button:hover {
+            background: var(--color-accent-gold);
+            color: var(--color-primary-dark);
+        }
+
+
+        /* --- FOOTER STYLES --- */
+        .main-footer {
+            margin-top: 0; /* Already separated by contact section */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-section {
+            padding: 15px;
+            min-width: 250px;
+        }
+
+        .footer-section h4 {
+            color: var(--color-accent-gold);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 1px solid rgba(255, 195, 0, 0.5);
+            padding-bottom: 5px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--color-light-text);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-accent-gold);
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--color-accent-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 0.85em;
+            color: #AAAAAA;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .circle-stat {
+                width: 150px;
+                height: 150px;
+                font-size: 0.9em;
+            }
+            .circle-stat.left {
+                top: -75px;
+                left: 10px;
+            }
+            .circle-stat.right {
+                top: -30px;
+                right: 10px;
+            }
+            .resource-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            .services {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .circle-stat {
+                display: none; /* Hide circles on small screens */
+            }
+            .hero-content {
+                padding-top: 0;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-section {
+                min-width: 100%;
+            }
+            .footer-section h4 {
+                text-align: center;
+            }
+            .footer-section p, .footer-section a {
+                display: block;
+                text-align: center;
+            }
+            .testimonial-card {
+                max-width: 100%;
+            }
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="logo">DAYANANDA PHD ASSISTANCE</div>
+        <div class="nav">
+            <a href="#about">ABOUT</a>
+            <a href="#expertise">EXPERTISE</a>
+            <a href="#resources">RESOURCES</a>
+            <a href="#home" onclick="showHome()">SERVICES</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </div>
+
+    <section class="section" id="about">
+        <h2>About Dayananda Research</h2>
+        <p class="about-desc">
+            Dayananda Research is a dedicated academic partner, leveraging years of expertise to support PhD candidates in achieving research excellence. Our multidisciplinary team comprises expert academic writers, meticulous editors, advanced statisticians, and seasoned research consultants. We offer comprehensive, specialized research assistance tailored to every stage of your doctoral journey, ensuring high-quality support across all academic disciplines.
+        </p>
+    </section>
+
+    <div id="home">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="circle-stat left">
+                    Successfully delivered quality research aid to **3000+ clients**
+                </div>
+
+                <div class="circle-stat right">
+                    Team of **25+ qualified experts**
+                </div>
+
+                <h1>All-in-one PhD Thesis Help in India</h1>
+                <p>The leading academic partner for your doctoral journey.</p>
+            </div>
+
+            <div class="cards">
+                <div class="card" onclick="showPhase('phase1')">
+                    <div class="icon"><i class="fas fa-file-signature"></i></div>
+                    <h3>PhD PHASE 1</h3>
+                    <p>Proposal, Synopsis, Literature Review, Novelty</p>
+                </div>
+                <div class="card" onclick="showPhase('phase2')">
+                    <div class="icon"><i class="fas fa-microchip"></i></div>
+                    <h3>PhD PHASE 2</h3>
+                    <p>Implementation, Coding, Data Collection & Design</p>
+                </div>
+                <div class="card" onclick="showPhase('phase3')">
+                    <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>PhD PHASE 3</h3>
+                    <p>Thesis Writing, Statistical Analysis & Formatting</p>
+                </div>
+                <div class="card" onclick="showPhase('phase4')">
+                    <div class="icon"><i class="fas fa-book-open"></i></div>
+                    <h3>PhD PHASE 4</h3>
+                    <p>Publication Support, Journal Selection & Defense Prep</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" id="expertise">
+        <h2>Our PhD Expert Panel</h2>
+        <p class="about-desc" style="color: var(--color-dark-text); margin-bottom: 50px;">
+            Our support comes exclusively from **PhD-holders** and seasoned academic consultants, ensuring subject-matter depth and adherence to global academic standards.
+        </p>
+        <div class="expert-grid">
+            <div class="expert-card">
+                <i class="fas fa-user-tie fa-3x" style="color: var(--color-accent-gold); margin-bottom: 15px;"></i>
+                <h4>Dr. Arjun Desai</h4>
+                <p>PhD, Computer Science</p>
+                <span class="specialty">Data Science & AI/ML Simulation</span>
+                <p>12+ Years of Academic Consulting</p>
+            </div>
+            <div class="expert-card">
+                <i class="fas fa-user-graduate fa-3x" style="color: var(--color-accent-gold); margin-bottom: 15px;"></i>
+                <h4>Dr. Priya Sharma</h4>
+                <p>PhD, Economics & Management</p>
+                <span class="specialty">Econometrics & Statistical Modeling (SPSS, R)</span>
+                <p>8+ Years of Research Mentorship</p>
+            </div>
+            <div class="expert-card">
+                <i class="fas fa-pencil-ruler fa-3x" style="color: var(--color-accent-gold); margin-bottom: 15px;"></i>
+                <h4>Dr. Vivek Rao</h4>
+                <p>PhD, Mechanical Engineering</p>
+                <span class="specialty">Numerical Analysis & MATLAB Implementation</span>
+                <p>15+ Years in Research & Development</p>
+            </div>
+            <div class="expert-card">
+                <i class="fas fa-balance-scale fa-3x" style="color: var(--color-accent-gold); margin-bottom: 15px;"></i>
+                <h4>Dr. Leena Gupta</h4>
+                <p>PhD, Humanities & Law</p>
+                <span class="specialty">Qualitative Research & Academic Editing</span>
+                <p>10+ Years of Thesis Review</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section" id="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                    I really owe the team for all their support that finally got me through the review committee. The statistical analysis and simulation tools have certainly helped me write a great thesis.
+                </p>
+                <p class="reviewer-name">Vritika Kumar</p>
+                <p class="reviewer-title">PhD Scholar, Management</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                    The literature review service was incredibly thorough. It saved me months of work and helped solidify my research methodology right from Phase 1. Highly recommend their professional approach.
+                </p>
+                <p class="reviewer-name">Kavitha Namakkal</p>
+                <p class="reviewer-title">Doctoral Candidate, Engineering</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                    From proposal drafting to final paper publication support, Dayananda Research provided seamless, expert guidance. Their team is knowledgeable, timely, and truly cares about academic quality.
+                </p>
+                <p class="reviewer-name">Rajeshwari V.</p>
+                <p class="reviewer-title">Research Fellow, Humanities</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="resources">
+        <h2>PhD Resources & Knowledge Hub</h2>
+        <p class="about-desc" style="color: var(--color-light-text); margin-bottom: 50px;">
+            Access free guides, critical templates, and high-value articles written by our PhD experts to empower your research journey.
+        </p>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h4><i class="fas fa-blog"></i> Research Blog</h4>
+                <p>Expert articles on choosing a topic, managing supervisors, and writing effectively.</p>
+                <a href="#">Read Our Latest Posts →</a>
+            </div>
+            <div class="resource-card">
+                <h4><i class="fas fa-question-circle"></i> Frequently Asked Questions</h4>
+                <p>Immediate answers to common queries about our services, pricing, and confidentiality.</p>
+                <a href="#">View All FAQs →</a>
+            </div>
+            <div class="resource-card">
+                <h4><i class="fas fa-download"></i> Free Templates & Guides</h4>
+                <p>Downloadable templates for APA/MLA formatting, research proposals, and Gantt charts.</p>
+                <a href="#">Access Downloads →</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="phase1" class="section">
+        <h2>PhD Phase 1: Research Planning & Novelty</h2>
+        <div class="services">
+            <div class="service-item">
+                <h3>Novelty Identification & Research Gap</h3>
+                <p>1. **Topic Finalizing:** Refinement of the core research domain for academic viability.</p>
+                <p>2. **Base Paper Selection:** Identification of seminal and most relevant papers for foundation.</p>
+                <p>3. **Novelty Drafting:** Creation of a document detailing the unique contribution and research gap (novelty).</p>
+                <p>4. **Novelty Delivery:** Providing the documented novel concept to the client for supervisor approval.</p>
+            </div>
+            <div class="service-item">
+                <h3>Proposal & Synopsis Writing</h3>
+                <p>Crafting a compelling **PhD Research Proposal** that adheres to university guidelines.</p>
+                <p>Includes defining objectives, scope, timeline, and preliminary methodology.</p>
+            </div>
+            <div class="service-item">
+                <h3>Comprehensive Literature Review</h3>
+                <p>In-depth, structured review of relevant existing scholarship to establish context and justification.</p>
+                <p>Identification and thematic analysis of theoretical frameworks.</p>
+            </div>
+            <div class="service-item">
+                <h3>Research Methodology Development</h3>
+                <p>Designing a robust and justifiable methodology (quantitative, qualitative, or mixed-methods).</p>
+                <p>Selection of appropriate research tools, sampling strategy, and ethical consideration drafting.</p>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showHome()">← Back to Home</button>
+    </div>
+
+    <div id="phase2" class="section">
+        <h2>PhD Phase 2: Implementation & Data Collection</h2>
+        <div class="services">
+            <div class="service-item">
+                <h3>Implementation and Code Delivery</h3>
+                <p>1. **Implementation of Novelty:** Translating the approved novelty into functional code/model.</p>
+                <p>2. **Timely Delivery:** Code implementation provided within **30 working days** (subject to complexity).</p>
+                <p>3. **Code Explanation:** A detailed explanation of the logic, algorithm, and implementation process.</p>
+                <p>4. **System Setup:** Upon client satisfaction, the working code is set up on the client's system.</p>
+            </div>
+            <div class="service-item">
+                <h3>Advanced Coding & Simulation</h3>
+                <p>Expert programming support in languages like **Python, R, Java, or MATLAB**.</p>
+                <p>Development and testing of complex algorithms and simulation models.</p>
+            </div>
+            <div class="service-item">
+                <h3>Instrument Design & Validation</h3>
+                <p>Creation of validated research instruments like **Questionnaires, Survey Scales**, and Interview Guides.</p>
+                <p>Includes reliability and validity testing support (e.g., Cronbach's Alpha).</p>
+            </div>
+            <div class="service-item">
+                <h3>Ethical Review & Data Management</h3>
+                <p>Assistance with preparing documents for the **Institutional Review Board (IRB)/Ethics Committee**.</p>
+                <p>Secure data collection and management planning to ensure compliance.</p>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showHome()">← Back to Home</button>
+    </div>
+
+    <div id="phase3" class="section">
+        <h2>PhD Phase 3: Thesis Writing & Data Analysis</h2>
+        <div class="services">
+            <div class="service-item">
+                <h3>Article Write-Up & Thesis Drafting</h3>
+                <p>1. **Article Write-Up:** Output from Phase 2 is converted into a structured academic article.</p>
+                <p>2. **Drafting Timeline:** The article write-up process typically takes **30 working days**.</p>
+                <p>3. **Client Approval:** The final copy is only forwarded to the client upon their full approval.</p>
+                <p>4. **Thesis Integration:** Support in integrating chapters (Results, Discussion, Conclusion) seamlessly into the full thesis draft.</p>
+            </div>
+            <div class="service-item">
+                <h3>Advanced Statistical Analysis</h3>
+                <p>Hypothesis testing and data analysis using **SPSS, AMOS, STATA, or R**.</p>
+                <p>Expert analysis in complex methods like **ANOVA, Regression, SEM (Structural Equation Modeling)**, and Time Series.</p>
+            </div>
+            <div class="service-item">
+                <h3>Results Interpretation & Discussion</h3>
+                <p>Expert translation of statistical output into clear, academically sound findings and discussion chapters.</p>
+                <p>Linking results back to the original research questions and literature review.</p>
+            </div>
+            <div class="service-item">
+                <h3>Academic Editing & Proofreading</h3>
+                <p>Comprehensive review covering grammar, syntax, clarity, and adherence to specific formatting styles (e.g., APA, MLA, Chicago).</p>
+                <p>Includes a complimentary **Plagiarism Check Report** (Turnitin/iThenticate).</p>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showHome()">← Back to Home</button>
+    </div>
+
+    <div id="phase4" class="section">
+        <h2>PhD Phase 4: Publication & Defense</h2>
+        <div class="services">
+            <div class="service-item">
+                <h3>Final Submission & Follow-up</h3>
+                <p>1. **Final Draft Approval:** Client confirms satisfaction with all written drafts and code outputs.</p>
+                <p>2. **Final Submission Guidance:** Assistance with final submission procedures and required documentation.</p>
+                <p>3. **Post-Submission Follow-up:** Continued support after submission until the point of acceptance/defense.</p>
+            </div>
+            <div class="service-item">
+                <h3>Journal Publication Support</h3>
+                <p>End-to-end guidance for publishing in **Scopus, SCI, or UGC CARE List** journals.</p>
+                <p>Includes formatting the paper to the target journal's specific author guidelines.</p>
+            </div>
+            <div class="service-item">
+                <h3>Thesis/Viva Voce Preparation</h3>
+                <p>Development of presentation slides (PPT) and comprehensive coaching for the **Viva Voce defense**.</p>
+                <p>Anticipating tough questions and preparing confident, academic responses.</p>
+            </div>
+            <div class="service-item">
+                <h3>Revision and Resubmission Support</h3>
+                <p>Support in addressing reviewers' comments and revisions for journal resubmission or thesis rework post-viva.</p>
+                <p>Ensuring all academic feedback is systematically incorporated.</p>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showHome()">← Back to Home</button>
+    </div>
+
+    <section class="section" id="contact">
+        <h2>Get in Touch</h2>
+        <p class="about-desc" style="color: var(--color-dark-text); margin-bottom: 30px;">
+            Ready to start your journey? Contact us today for a free consultation on your PhD research needs.
+        </p>
+        <div class="contact-form-container">
+            <form action="#" method="POST">
+                <input type="text" name="name" placeholder="Your Full Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <input type="tel" name="phone" placeholder="Your Phone Number (Optional)">
+                <textarea name="message" rows="5" placeholder="Tell us about your PhD research area and needs..." required></textarea>
+                <button type="submit">Submit Request for Consultation</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>We provide comprehensive, expert-led PhD assistance across all phases, ensuring high-quality research output.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#about">About</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#resources">Resources</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Chennai, India</p>
+                    <p><i class="fas fa-envelope"></i>piyushathummadi@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9346596171</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Dayananda PhD Assistance. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function showPhase(phaseId) {
+            // Hide all phase sections
+            document.getElementById('phase1').style.display = 'none';
+            document.getElementById('phase2').style.display = 'none';
+            document.getElementById('phase3').style.display = 'none';
+            document.getElementById('phase4').style.display = 'none';
+
+            // Hide the home/hero content
+            document.getElementById('home').style.display = 'none';
+
+            // Show the selected phase section
+            document.getElementById(phaseId).style.display = 'block';
+            
+            // Scroll to the top of the new section
+            document.getElementById(phaseId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showHome() {
+            // Hide all phase sections
+            document.getElementById('phase1').style.display = 'none';
+            document.getElementById('phase2').style.display = 'none';
+            document.getElementById('phase3').style.display = 'none';
+            document.getElementById('phase4').style.display = 'none';
+
+            // Show the home/hero content
+            document.getElementById('home').style.display = 'block';
+
+            // Scroll to the top of the hero section
+            document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Ensure the home view is visible on initial load
+        document.addEventListener('DOMContentLoaded', showHome);
+    </script>
+</body>
+</html>
